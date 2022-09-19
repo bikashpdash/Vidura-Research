@@ -1,0 +1,8 @@
+https://timesofindia.indiatimes.com/rssfeedstopstories.cms
+https://www.nytimes.com/rss
+https://edition.cnn.com/services/rss/
+https://www.rt.com/rss-feeds/
+https://allafrica.com/misc/tools/rss.html?feed=burundi
+https://www.hindustantimes.com/rss
+http://rss.cnn.com/rss/edition.rss
+https://rss.nytimes.com/services/xml/rss/nyt/World.xml
