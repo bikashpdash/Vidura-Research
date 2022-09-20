@@ -1,7 +1,11 @@
 { pkgs }: {
   deps = [
-    pkgs.unixtools.ping
+    pkgs.wget
+    pkgs.unzip
     pkgs.python38Full
+    pkgs.go_1_17
+    pkgs.gopls
+    pkgs.nodejs-16_x
   ];
   env = {
     PYTHON_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [

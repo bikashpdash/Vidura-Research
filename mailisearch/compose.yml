@@ -1,0 +1,17 @@
+services:
+  image: getmeili/meilisearch:v0.28
+  ports: 
+    - 7700:7700
+  environments:
+    - MEILI_MASTER_KEY=MASTER_KEY
+    - MEILI_ENV=development
+  volumes:
+    - $(pwd)/meili_data:/meili_data
+
+# docker run --rm -d \
+#     --name=meilisearch \
+#     -p 7700:7700 \
+#     -e MEILI_MASTER_KEY='MASTER_KEY' \
+#     -e MEILI_ENV='development' \
+#     -v $(pwd)/meili_data:/meili_data \
+#     getmeili/meilisearch:v0.28

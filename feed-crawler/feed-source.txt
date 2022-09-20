@@ -1,0 +1,6 @@
+https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml
+https://timesofindia.indiatimes.com/rssfeedstopstories.cms
+https://rss.nytimes.com/services/xml/rss/nyt/World.xml
+https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf
+http://rss.cnn.com/rss/edition.rss
+http://feeds.bbci.co.uk/news/rss.xml
