@@ -1,10 +1,11 @@
-from python_liftbridge import Lift, Message, Stream, ErrStreamExists
+from python_liftbridge import Lift, Stream, ErrStreamExists
+import logging
 
 # Create a Liftbridge client.
 client = Lift(ip_address='localhost:9292', timeout=5)
 
 # Create a Liftbridge stream with name "foo-stream"
 try:
-    client.create_stream(Stream(subject='foo', name='foo-stream'))
+    client.create_stream(Stream(subject='feed', name='feed.stream.1'))
 except ErrStreamExists:
-    print('This stream already exists!')
+    logging.info('This stream already exists!')

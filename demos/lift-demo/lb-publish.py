@@ -1,4 +1,4 @@
-from python_liftbridge import Lift, Message, Stream, ErrStreamExists
+from python_liftbridge import Lift, Message
 
 # Create a Liftbridge client.
 client = Lift(ip_address='localhost:9292', timeout=5)

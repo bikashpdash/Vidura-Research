@@ -53,18 +53,14 @@ async def to_index(doc: feedparser.FeedParserDict):
     docs = []
     for entry in doc.entries:
         sys_id = hashlib.sha256(entry["link"].encode('utf-8')).hexdigest()
-        docs.append({
-            "id":
-            sys_id,
-            "link":
-            entry["link"],
-            "title":
-            entry["title"],
-            "summary":
-            entry["summary"] if "summary" in entry.keys() else "",
-            "timestamp":
-            datetime.now().strftime("%y-%m-%dT%H-%M-%S")
-        })
+        doc = {
+            "id": sys_id,
+            "link": entry["link"],
+            "title": entry["title"],
+            "summary": entry["summary"] if "summary" in entry.keys() else "",
+            "timestamp": datetime.now().strftime("%y-%m-%dT%H-%M-%S")
+        }
+        docs.append(doc)
         logging.info(entry["link"])
     with open('data/cache/docs.txt', 'a') as d:
         d.write("###########################\n")
@@ -96,16 +92,29 @@ async def to_aioindex(doc: feedparser.FeedParserDict):
         await index.add_documents(docs)
 
 
-async def to_stream():
+async def to_stream(doc: feedparser.FeedParserDict):
     # Create a Liftbridge client.
     client = Lift(ip_address='localhost:9292', timeout=5)
     # Create a Liftbridge stream with name "foo-stream"
     try:
-        client.create_stream(Stream(subject='feed', name='feed.'))
+        client.create_stream(Stream(subject='feed', name='feed.stream.1'))
     except ErrStreamExists:
         logging.info('This stream already exists!')
-    # Publish a message to the stream with the name "foo-stream".
-    client.publish(Message(value='hello', stream='foo-stream'))
+
+    for entry in doc.entries:
+        if "summary" in entry.keys() and entry["summary"] is not None:
+            sys_id = hashlib.sha256(entry["link"].encode('utf-8')).hexdigest()
+            doc = {
+                "id": sys_id,
+                "link": entry["link"],
+                "title": entry["title"],
+                "summary":
+                entry["summary"] if "summary" in entry.keys() else "",
+                "timestamp": datetime.now().strftime("%y-%m-%dT%H-%M-%S")
+            }
+            # Publish a message to the stream with the name "foo-stream".
+            client.publish(
+                Message(value=json.dumps(doc), stream='feed.stream.1'))
 
 
 async def flow():
@@ -122,7 +131,7 @@ async def flow():
         print(url)
         r = await fetch_feed(url)
         d = await parse_feed(r)
-        await to_index(d)
+        await to_stream(d)
         print("#######################################")
 
 

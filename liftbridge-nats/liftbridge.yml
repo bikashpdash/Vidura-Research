@@ -2,4 +2,4 @@ host: 0.0.0.0
 clustering.raft.bootstrap.seed: true
 nats.embedded.config: nats.conf
 logging.nats: true
-data.dir: data/liftbridge/server-1
+data.dir: ../data/liftbridge/server-1
