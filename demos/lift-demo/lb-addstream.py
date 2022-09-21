@@ -9,3 +9,9 @@ try:
     client.create_stream(Stream(subject='feed', name='feed.stream.1'))
 except ErrStreamExists:
     logging.info('This stream already exists!')
+
+# Create a Liftbridge stream with name "foo-stream"
+try:
+    client.create_stream(Stream(subject='event', name='event.stream.1'))
+except ErrStreamExists:
+    logging.info('This stream already exists!')

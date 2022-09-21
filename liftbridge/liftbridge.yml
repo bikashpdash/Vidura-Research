@@ -1,0 +1,18 @@
+# Common
+host: 0.0.0.0
+data.dir: ../tmp/liftbridge/server-1
+
+clustering:
+  raft.bootstrap.seed: true
+
+nats:
+  embedded.config: nats.conf
+
+logging:
+    nats: true
+
+# Specify message stream settings.
+streams:
+  retention.max:
+    age: 2h
+  compact.enabled: true

@@ -7,9 +7,9 @@ Folder : feed-crawler
 Desc : Message/Event Server Bus
 Folder : liftbridge-nats
 
-## Project #3: Mailisearch
-Desc :  Search Engine Server <br>
-Folder : liftbridge-nats
+## Project #3: Meilisearch
+Folder : meilisearch <br>
+Desc :  Search Engine Server 
 
 
 ## Misc

@@ -62,10 +62,10 @@ async def to_index(doc: feedparser.FeedParserDict):
         }
         docs.append(doc)
         logging.info(entry["link"])
-    with open('data/cache/docs.txt', 'a') as d:
-        d.write("###########################\n")
-        d.write(json.dumps(docs) + "\n")
-        d.close()
+    # with open('data/cache/docs.txt', 'a') as d:
+    #     d.write("###########################\n")
+    #     d.write(json.dumps(docs) + "\n")
+    #     d.close()
     index.add_documents(docs)
 
 

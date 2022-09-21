@@ -6,7 +6,7 @@ services:
     - MEILI_MASTER_KEY=MASTER_KEY
     - MEILI_ENV=development
   volumes:
-    - $(pwd)/meili_data:/meili_data
+    - /home/meili_data:/meili_data
 
 # docker run --rm -d \
 #     --name=meilisearch \
